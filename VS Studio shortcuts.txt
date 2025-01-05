@@ -1,0 +1,27 @@
+Visual Studio Code shortcuts:
+
+CTRL + B = toggle explorer menu
+CTRL + SHIFT + E = go directly to explorer
+CTRL + SHIFT + S = go directly to search
+CTRL + SHIFT + P = open command palette
+CTRL + f = search for ...
+CTRL + w = close file
+CTRL + tab = toggle back between multiple files
+CTRL + SHIFT + tab = switch back between multiple files
+CTRL + p = search files by name
+
+CTRL + -> or CTRL + <- = go from one word to the next
+CTRL + inicio = beginning of doc
+CTRL + fin = end of doc
+CTRL + d = select word you're on
+CTRL + f = search inside a tag after CTRL + d
+
+CTRL + ñ = open and close terminal tab
+
+Emmet snippets: https://docs.emmet.io/
+Emmit cheatsheet: https://docs.emmet.io/cheat-sheet/
+
+
+
+
+
