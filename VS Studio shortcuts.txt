@@ -21,6 +21,8 @@ CTRL + ñ = open and close terminal tab
 Emmet snippets: https://docs.emmet.io/
 Emmit cheatsheet: https://docs.emmet.io/cheat-sheet/
 
+SHIFT + ALT + A = comment out a block in CSS
+CTRL + K & CTRL + C = comment out a block in CSS 
 
 
 
