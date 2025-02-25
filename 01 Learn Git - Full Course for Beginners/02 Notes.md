@@ -30,3 +30,20 @@ Then, create a new branch using:
   => comit before switching to another branch
   => go to .git folder & checkout head file
 
+# Merging the branches
+
+two types of merges:
+1) fast-forward merge
+
+  git switch master
+  git merge [branch name]
+
+2) not fast-forward merge
+Merge two branches into one, or bring work from one branch into another. 
+
+Git tries best to revolve conflicts.You have to then manually get into the code with someone and discuss which parts you want to keep, remove markers, and save. 
+
+# Delete a branch
+  git branch -d [branch name]
+
+
