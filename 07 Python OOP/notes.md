@@ -178,4 +178,145 @@ user1 = User("dantheman", "dan@gmail.com", "123")
   #set new email
   user1.set_email("danny@outlook.com")
 
+# Python properties
+Python properties are less verbose than getters and setters
 
+  class User:
+    def __init__(self, username, email, password):
+      self.username = username
+      self._email = email
+      self.password = password
+
+    # getter property
+    @property
+    def email(self):
+        print("Email accessed")
+        return self._email
+
+    # setter property, uses public email property to keep email property private
+    @email.setter
+    def email(self, new_email):
+    if "@" in new_email:
+      self._email = new_email
+  
+  user1 = User("dantheman", "dan@gmail.com", "123")
+  user1.email = "this is not an email"
+  print(user1.email)
+
+# Static attributes
+ So far, this tutorial covered instance attributes. Each instance of a class can have its own unique data. Python classes can also have static attributes, which are shared among all instances of a class. 
+
+ A static attribute (sometimes called a class attribute) is an attribute that belongs to the class itself, not to any specific instance of the class. 
+
+ Static attributes are useful for datat that is common for all instances of a class.  
+
+  class User:
+    user_count = 0
+
+    def __init__(self, username, email):
+      self.username = username
+      self.email = email
+      # static attribute
+      User.user_count += 1
+
+    def display_user(self):
+      print(f"Username: {self.username}, Email: {self.email}")
+
+    
+    user1 = User("dantheman", "dan@gmail.com")
+    user2 = User("sally123", "sally@gmail.com")
+    print(User.user_count) # prints "2"
+    # you can also access the static attributes from the objects created from the class
+    print(user1.user_count) # logs 2
+    print(user2.user_count) # logs 2
+
+# Static Methods
+A static method in Python is a method that belongs to the class itself rather than any instance of the class.
+To define a static method, we use the '@staticmethod' decorator.
+
+Static vs Instance Method Example:
+
+  class BankAccount:
+    MIN_BALANCE = 100
+
+    def __init__(self, owner, balance = 0):
+      self.owner = owner
+      # protected instance attribute
+      self._balance = balance
+
+    def deposit(self, amount):
+      if self._is_valid_amount(amount):
+        self._balance += amount
+        self.__log_transaction("deposit", amount)
+      else:
+        print("Deposit amount must be positive.")
+
+    # protected method
+    def _is_valid_amount(self, amount):
+      return amount > 0
+
+    # private method
+    def __log__transaction(self, transaction_type, amount):
+      print(f"Logging {transaction_type} of ${amount}. New balance: ${self.balance}")
+
+
+    # static method, is independent of separate objects
+    @staticmethod
+    def is_valid_interest_rate(rate):
+      return 0 <= rate <= 5
+
+  account = BankAccont("Alice", 500)
+  account.deposit(200)
+
+  print(BankAccount.is_valid_interest_rate(3)) // logs True
+  print(BankAccount.is_valid_interest_rate(10)) // logs False
+
+# Part II: OOP Principles
+
+# Encapsulation
+Encapsulation helps to hide the internal implementation details of a class by only exposing the necessary functionalities to the outside world.
+
+Bad example without encapsulation:
+
+  class BadBankAccount:
+    def __init__(self, balance):
+      self.balance = balance
+
+  
+  account = BadBankAccount(0.0)
+  account.balance = -1
+  print(account.balance)
+
+  # better example that includes encapsulation:
+  class BankAccount:
+    def __init__(self):
+      self._balance = 0.0
+
+    # getter property
+    @property
+    def balance(self):
+      return self._balance
+
+    def deposit(self, amount):
+      if amount <= 0:
+        raise ValueError("Deposit amount must be positive.")
+      self._balance += amount
+
+    def withdraw(self, amount):
+      if amount <= 0:
+        raise ValueError("Withdraw amount must be positive.")
+      if amount > self.balance:
+        raise ValueError("Insufficient funds.")
+      self_balance -= amount
+  
+  account = BankAccount()
+  print(account.balance)
+  // this won't work:
+  account.balance = -1
+  // this works fine:
+  account.deposit(1.99)
+  print(account.balance)
+  account.withdraw(1)
+  print(acccount.balance)
+
+  
