@@ -319,4 +319,130 @@ Bad example without encapsulation:
   account.withdraw(1)
   print(acccount.balance)
 
+  # Abstraction 
+  Reduce complexity by hiding unnecessary details. Encapsulation is a mechanism that enables abstraction.
+
+    class EmailService(self):
+      print("Connecting to email server")
+
+    def _authenticate(self):
+      print("Authenticating...")
+
+    def send_email(self):
+      self._connect()
+      self._authenticate
+      print("sending email")
+      self._disconnect()
+
+    def _disconnect(self):
+      print("Disconnecting from email server...")
+
+    
+    email = EmailService()
+    email.send_email()
+
+# Inheritance
+Inheritance is a fundamental concept in object-oriented programming (OOP) that involves creating new classes (subclassed or derived classes) based on existing classes (superclasses or base classes).
+
+A Car is-a Vehicle
+A Bike is-a Vehicle
+
+  class Vehicle:
+    def __init__(self, brand, model, year):
+      self.brand = brand
+      self.model = model
+      self.year = year
+
   
+    def start(self):
+      print("Vehicle is starting")
+
+    def stop(self):
+      print("Vehicle is stopping")
+
+
+    class Car(Vehicle):
+      def  __init__(self, brand, model, year, number_of_doors, number_of_wheels):
+        # call init method of parent class
+        super().__init__(brand, model, year)
+        self.number_of_doors = number_of_doors
+        self.number_of_wheels = number_of_wheels
+    
+    class Bike(Vehicle):
+      def __init__(self, brand, model, year, number_of_wheels):
+      super().__init__(brand, model, year)
+      self.number_of_wheels = number_of_wheels
+
+
+    car = Car("Ford", "Focus", 2008, 5, 4)
+    bike = Bike("Honda", "Scoopy", 2018, 2)
+    print(car.__dict__)
+
+# Polymorphism
+The word polymorphism is derived from Greek, and means "having multiple forms":
+
+Poly = many
+Morph = forms
+
+  vehicles = [
+    Car("Ford", "Focus", 2008, 5),
+    Motorcyle("Honda", "Scoopy", 2018)
+  ]
+
+  // loop through list of vehicles and inspect them
+  for vehicle in vehicles:
+    if isinstance(vehicle, Car):
+      print(f"Inspecting {vehicle.brand} {vehicle.model} ({type(vehicle).__name__})")
+      vehicle.start()
+      vehicle.stop()
+    elif isinstance(vehicle, Motorcycle):
+      print(f"Inspecting {vehicle.brand} {vehicle.model} ({type(vehicle).__name__})")
+      vehicle.start()
+      vehicle.stop()
+    else:
+      raise Exception("Object is not a valid vehicle")
+
+// refactured solution:
+
+  class Vehicle:
+    def __init__(self, brand, model, year):
+      self.brand = brand
+      self.model = model
+      self.year = year
+
+    def start(self):
+      print("Vehicle is starting")
+
+    def stop(self):
+      print("Vehicle is stopping")
+
+    
+  class Car(Vehicle):
+    def __init__(self, brand, model, year, number_of_doors):
+      super().__init(brand, model, year)
+      self.number_of_doors = number_of_doors
+
+    def start(self):
+      print("Car is starting.")
+
+    def stop(self):
+      print("Car is stopping.")
+
+    
+  class Motorcycle(Vehicle):
+    def __init__(self, brand, model, year):
+      super().__init__(brand, model, year)
+
+    def start(self):
+      print("Motorcycle is starting.")
+
+    def stop(self):
+      print("Motorcycle is stopping.")
+  
+for vehicle in vehicles:
+  if isinstance(vehicle, Vehicle):
+    print(f"Inspecting {vehicle.bfrand}, {vehicle.model} ({type(vehicle).__name__})")
+    vehicle.start()
+    vehicle.stop()
+  else:
+    raise Exception("Object is not a valid vehicle")
